@@ -14,15 +14,14 @@ GitHub 로그인 상태에서 위 버튼을 누르면 "Create a new repository f
 
 OfficeAgent 인프라를 AWS에서 NHN 클라우드로, 장기적으로 오픈스택 기반 온프레미스로 단계적 이전하는 **마이그레이션 설계서 + 발표 세션**을 작성합니다. 코드 구현은 선택이며 PoC 수준으로 충분합니다.
 
-### 평가 역량
+### 평가 역량 — 3축 매핑
 
-| 역량 | 설명 |
-|------|------|
-| 마이그레이션 설계 | AWS 의존성 매핑, NHN/오픈스택 대응 아키텍처, 단계·롤백·다운타임 전략 |
-| 조사·학습 깊이 | NHN/CSAP/오픈스택 1차 자료 정독, 대안 비교, 미확인 영역의 리스크·검증 계획 |
-| 멀티 환경 추상화 | NHN과 오픈스택 둘 다 대응 가능한 분리 설계 (다이어그램·모듈) |
-| 발표·소통 | 30분 발표 + 30분 Q&A에서 의사결정 근거 설명 |
-| 학습 궤적 | retros/에 남는 바이브 코딩 흔적·KPT·시행착오 |
+| 평가 능력 | 채점 영역 | 비중 |
+|----------|----------|-----:|
+| **아키텍처 설계능력** | 마이그레이션 설계 + 멀티 환경 추상화 | 30% + 20% = **50%** |
+| **구현 및 검증능력** | 구현 · 검증 가능성 (`VALIDATION.md` 또는 MIGRATION_PLAN §검증) | **20%** |
+| **잘 모르는 분야 학습능력** | 조사 · 학습 깊이 (+ Track C 20점 보조) | **20%** |
+| (보조) 발표 · 소통 | 30분 Q&A에서 위 3축 검증 수단 | **10%** |
 
 ### 기술 스택
 
@@ -51,15 +50,18 @@ git config core.hooksPath .githooks
 ```
 .
 ├── docs/
-│   ├── PRD.md                     # 과제 PRD (요구사항·평가 비중·2026-05-31 23:59 KST 마감)
-│   └── TEMPLATE_GUIDE.md          # 본 템플릿 사용 가이드 (선택형 깊이 안내)
-├── MIGRATION_PLAN.template.md     # 마이그레이션 설계서 시작 스켈레톤 → MIGRATION_PLAN.md로 작성
-├── ARCHITECTURE.template.md       # 추상화 설계 시작 스켈레톤 → ARCHITECTURE.md로 작성
+│   ├── PRD.md                     # 과제 PRD (요구사항·5영역 채점표·2026-05-31 23:59 KST 마감)
+│   └── TEMPLATE_GUIDE.md          # 본 템플릿 사용 가이드 (선택형 깊이 + 검증 산출물 안내)
+├── MIGRATION_PLAN.template.md     # 마이그레이션 설계서 + §6 검증 계획 → MIGRATION_PLAN.md
+├── ARCHITECTURE.template.md       # 추상화 설계 → ARCHITECTURE.md
+├── VALIDATION.template.md         # 검증 산출물 (PRD §1.3, 필수) → VALIDATION.md
+│                                  #   ※ MIGRATION_PLAN §6에 통합해도 동등
 ├── deck/                          # 발표 자료 (PDF/Keynote/Markdown deck 자유)
 ├── retros/                        # Retrobot 또는 수동 학습 일지
-├── infra/                         # (선택) IaC PoC
+├── infra/                         # (선택) IaC PoC 확장
 ├── runbooks/                      # (선택) 운영 자동화·AIOps PoC
 ├── scripts/                       # (선택) 검증 스크립트
+├── observability/                 # (선택) 메트릭/로그 대시보드 정의
 ├── .githooks/                     # Retrobot post-commit 훅
 └── retrobot/                      # Retrobot 스킬 정의
 ```
