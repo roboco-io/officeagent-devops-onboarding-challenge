@@ -51,7 +51,7 @@ git config core.hooksPath .githooks
 ```
 .
 ├── docs/
-│   ├── PRD.md                     # 과제 PRD (요구사항·평가 비중·14일 마감)
+│   ├── PRD.md                     # 과제 PRD (요구사항·평가 비중·2026-05-31 23:59 KST 마감)
 │   └── TEMPLATE_GUIDE.md          # 본 템플릿 사용 가이드 (선택형 깊이 안내)
 ├── MIGRATION_PLAN.template.md     # 마이그레이션 설계서 시작 스켈레톤 → MIGRATION_PLAN.md로 작성
 ├── ARCHITECTURE.template.md       # 추상화 설계 시작 스켈레톤 → ARCHITECTURE.md로 작성
@@ -74,7 +74,7 @@ git config core.hooksPath .githooks
 4. PRD에 따라 과제 진행
 5. [`serithemage`](https://github.com/serithemage)를 Collaborator로 초대
 
-**기한:** 공고일로부터 14일 (KST 23:59)
+**기한:** 2026-05-31 (일) 23:59 KST
 **발표 세션:** 제출 마감 후 7일 이내, 30분 발표 + 30분 Q&A
 
 자세한 내용은 [PRD](./docs/PRD.md) · [본 템플릿 가이드](./docs/TEMPLATE_GUIDE.md)를 참고하세요.
