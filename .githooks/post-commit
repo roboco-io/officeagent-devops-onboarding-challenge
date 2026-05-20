@@ -15,13 +15,20 @@ fi
 
 echo "🤖 Retrobot: 회고 생성 중..."
 
-# Claude Code SDK 또는 Codex CLI로 스킬 실행
+# AI 에이전트로 스킬 실행 — Claude Code 권장. 없으면 Codex → Gemini 순으로 폴백.
+# 에이전트별 컨버팅 상세는 docs/AGENT_SETUP.md 참조.
 if command -v claude >/dev/null 2>&1; then
+    # Claude Code (권장): SKILL.md를 그대로 전달
     claude -p "$(cat $SKILL_PATH)" --allowedTools 'Bash(command)' 'Read(file_path)' 'Write(file_path,content)' 'Glob(pattern)' 'Grep(pattern)' 2>/dev/null
 elif command -v codex >/dev/null 2>&1; then
-    codex --quiet "$(cat $SKILL_PATH)" 2>/dev/null
+    # Codex: SKILL.md를 stdin 파이프로 전달 (argv 방식은 stdin EOF stuck 위험)
+    cat "$SKILL_PATH" | codex exec --sandbox workspace-write 2>/dev/null
+elif command -v gemini >/dev/null 2>&1; then
+    # Gemini CLI: SKILL.md를 프롬프트로 전달
+    gemini -p "$(cat $SKILL_PATH)" 2>/dev/null
 else
-    echo "ℹ Retrobot: claude 또는 codex CLI가 설치되어 있지 않습니다. 건너뜁니다."
+    echo "ℹ Retrobot: claude / codex / gemini CLI 중 하나도 설치되어 있지 않습니다. 건너뜁니다."
+    echo "  수동 회고: retros/YYYY-MM-DD.md 를 직접 작성하셔도 평가는 동일합니다."
     exit 0
 fi
 

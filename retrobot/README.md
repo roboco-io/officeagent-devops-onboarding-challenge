@@ -2,15 +2,17 @@
 
 > 당신의 회고를 자동으로 기록해주는 도구입니다.
 
-Retrobot은 AI 에이전트(Claude Code / Codex)가 자신의 작업 로그를 분석하여 **KPT(Keep/Problem/Try) 회고**를 자동 생성합니다.
+Retrobot은 AI 에이전트(**Claude Code 권장** / Codex / Gemini)가 자신의 작업 로그를 분석하여 **KPT(Keep/Problem/Try) 회고**를 자동 생성합니다.
 매 push마다 자동으로 회고를 생성하고, 타임라인으로 정리하여 성장의 흐름을 한눈에 볼 수 있습니다.
 
 ## 동작 방식
 
 1. `git commit` 완료 후 `.githooks/post-commit` 훅이 트리거됨
-2. 훅이 `claude` 또는 `codex` CLI를 호출하며 `retrobot/SKILL.md` 지침을 전달
-3. 에이전트가 `~/.claude/projects/` (또는 `~/.codex/`) 로그를 읽고 분석
+2. 훅이 `claude` → `codex` → `gemini` 순으로 가용한 CLI를 호출하며 `retrobot/SKILL.md` 지침을 전달
+3. 에이전트가 `~/.claude/projects/` (또는 `~/.codex/` 등) 로그를 읽고 분석
 4. KPT 회고 마크다운을 `retros/`에 생성하고 자동 커밋
+
+> 에이전트별 컨버팅 상세는 [`docs/AGENT_SETUP.md`](../docs/AGENT_SETUP.md) 참조.
 
 ## 설정
 
@@ -23,11 +25,14 @@ git config core.hooksPath .githooks
 ## 수동 실행
 
 ```bash
-# Claude Code로 실행
+# Claude Code로 실행 (권장)
 claude -p "$(cat retrobot/SKILL.md)"
 
-# Codex로 실행
-codex "$(cat retrobot/SKILL.md)"
+# Codex로 실행 (stdin 파이프 — argv 방식은 hang 위험)
+cat retrobot/SKILL.md | codex exec --sandbox workspace-write
+
+# Gemini CLI로 실행
+gemini -p "$(cat retrobot/SKILL.md)"
 ```
 
 ## 출력 구조
