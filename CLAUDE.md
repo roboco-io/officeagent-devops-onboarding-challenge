@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 프로젝트 개요
 
-OfficeAgent DevOps/AIOps 채용 과제 — **AWS → NHN 클라우드 → (장기) 오픈스택 마이그레이션 설계**. OfficeAgent 운영 인프라(별첨 가상 스펙)를 NHN과 오픈스택 둘 다 대응 가능한 마이그레이션 아키텍처로 설계하고 발표하는 과제 리포지토리.
+OfficeAgent DevOps/AIOps 채용 과제 — **멀티 환경 배포 설계 (NHN·오픈스택 등 규제 대응)**. OfficeAgent를 정부·공공기관 고객의 규제 요건에 맞춰 AWS·NHN 클라우드·오픈스택 온프레미스 등 여러 환경에 배포 가능하도록 설계하고 발표하는 과제 리포지토리.
 
 ## 핵심 요구사항
 
