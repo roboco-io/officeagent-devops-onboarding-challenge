@@ -20,19 +20,34 @@ AI 도구가 둘 다 없어도 진행 가능합니다. `retros/` 디렉토리에
 
 ## 2. 첫 2일 — 조사 + 도메인 2개 결정
 
+### 먼저: 공공 규제 LLM Wiki를 읽으세요
+
+이 리포에는 한국 공공·정부기관 클라우드 도입 규제가 **`wiki/` 디렉토리에 LLM Wiki로 구조화**되어 있습니다. `wiki/index.md`를 진입점으로 시작하세요.
+
+- CSAP·망분리·데이터 주권·ISMS·NHN Cloud·오픈스택·정책 동향 등 10개 페이지
+- 각 페이지는 `[[wiki-link]]` 교차참조 + 1차 자료 출처
+- `wiki/migration-checklist.md`는 설계 시 점검 항목
+- AI 에이전트를 쓴다면 `CLAUDE.md` §"LLM Wiki 활용 규칙"이 wiki 우선 참조를 지시합니다
+
+> **wiki는 출발점입니다.** 평가의 핵심은 wiki를 기반으로 1차 자료까지 직접 파고드는 것입니다. wiki를 그대로 베끼면 평가되지 않습니다. 조사하며 새로 알게 된 내용을 wiki에 추가(`llm-wiki ingest` 또는 수동으로 `wiki/`에 페이지 작성)하면 가산됩니다.
+>
+> `llm-wiki` 스킬이 없는 환경이라면 `wiki/`를 일반 마크다운 디렉토리로 읽고, 확장은 `wiki/`에 페이지를 직접 추가하면 됩니다 (스킬 없이도 동작).
+
+### 도메인 2개 결정
+
 PRD §1.1의 5개 도메인 중 **본인이 깊이 분석할 2개**를 먼저 결정하세요:
 
-| 도메인 | 깊이 분석 시 기대 |
-|--------|------------------|
-| A. 네트워크 / 보안 | VPC↔NHN VPC, NAT 등가, IAM↔NHN 권한, CSAP 망분리 |
-| B. 데이터 / 스토리지 | RDS↔NHN DB, S3↔Object Storage, 이전 단계·일관성 검증 |
-| C. 컴퓨트 / 배포 | ECS Fargate↔NHN K8s/VM, 배포 파이프라인, 롤백 |
-| D. 운영·관측 / AIOps | CloudWatch↔NHN 모니터링, AIOps 자동화 |
-| E. 비용 / 규제 | 비용 정량 비교, CSAP·데이터 주권·계열사 정책 |
+| 도메인 | 깊이 분석 시 기대 | 관련 wiki |
+|--------|------------------|-----------|
+| A. 네트워크 / 보안 | VPC↔NHN VPC, NAT 등가, IAM↔NHN 권한, CSAP 망분리 | `wiki/network-isolation.md` |
+| B. 데이터 / 스토리지 | RDS↔NHN DB, S3↔Object Storage, 이전 단계·일관성 검증 | `wiki/data-sovereignty.md` |
+| C. 컴퓨트 / 배포 | ECS Fargate↔NHN K8s/VM, 배포 파이프라인, 롤백 | `wiki/nhn-cloud.md` |
+| D. 운영·관측 / AIOps | CloudWatch↔NHN 모니터링, AIOps 자동화 | `wiki/policy-trends.md` |
+| E. 비용 / 규제 | 비용 정량 비교, CSAP·데이터 주권·계열사 정책 | `wiki/csap.md` |
 
 **선택 기준 힌트** — 본인이 이미 익숙한 영역 1개 + 도전적인 영역 1개를 섞으면 학습 궤적이 잘 드러납니다.
 
-이 시점부터 1차 자료를 적극적으로 인용하세요:
+이 시점부터 1차 자료를 적극적으로 인용하세요 (wiki 각 페이지의 "1차 자료" 섹션도 출발점):
 - NHN Cloud docs: <https://docs.nhncloud.com/>
 - CSAP 인증 가이드: KISA 또는 정보보호평가센터 자료
 - 오픈스택 docs: <https://docs.openstack.org/>

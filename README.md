@@ -51,6 +51,16 @@ PRD §1.1의 5개 도메인 (네트워크·데이터·컴퓨트·관측·비용)
 
 `.githooks/post-commit`은 claude → codex → gemini 순으로 자동 폴백합니다.
 
+## 공공 규제 LLM Wiki — `wiki/`
+
+한국 공공·정부기관 클라우드 도입 규제(CSAP·망분리·데이터 주권·ISMS·NHN Cloud·오픈스택·정책 동향)가 **`wiki/` 디렉토리에 LLM Wiki로 구조화**되어 있습니다.
+
+- **`wiki/index.md`를 진입점**으로 시작하세요. 10개 페이지가 `[[wiki-link]]`로 교차참조됩니다.
+- `wiki/migration-checklist.md` — 설계 시 점검 항목
+- `wiki/raw/` — Perplexity 1차 조사 원자료 (출처 보존)
+- **wiki는 출발점**입니다. 평가의 핵심은 wiki를 기반으로 1차 자료까지 직접 파고드는 것 — 그대로 베끼면 평가되지 않습니다.
+- 조사하며 새로 알게 된 내용을 wiki에 추가하면 가산 (필수 아님). `CLAUDE.md` §"LLM Wiki 활용 규칙" 참조.
+
 ## Retrobot — 자동 회고
 
 이 프로젝트에는 [Retrobot](./retrobot/README.md)이 포함되어 있습니다. `git commit`할 때마다 AI 에이전트(Claude Code 권장 / Codex / Gemini) 작업 로그를 분석하여 KPT 회고를 자동 생성합니다.
@@ -69,7 +79,12 @@ git config core.hooksPath .githooks
 .
 ├── docs/
 │   ├── PRD.md                     # 과제 PRD (요구사항·5영역 채점표·2026-05-31 23:59 KST 마감)
-│   └── TEMPLATE_GUIDE.md          # 본 템플릿 사용 가이드 (선택형 깊이 + 검증 산출물 안내)
+│   ├── TEMPLATE_GUIDE.md          # 본 템플릿 사용 가이드 (선택형 깊이 + 검증 산출물 안내)
+│   └── AGENT_SETUP.md             # AI 에이전트 컨버팅 가이드 (Claude/Codex/Gemini)
+├── wiki/                          # 공공 규제 LLM Wiki — index.md 진입, 10개 페이지
+│   ├── index.md                   #   자동 라우팅 레이어
+│   ├── csap.md, network-isolation.md, ...  #   교차참조 지식 페이지
+│   └── raw/                       #   Perplexity 1차 조사 원자료
 ├── MIGRATION_PLAN.template.md     # 마이그레이션 설계서 + §6 검증 계획 → MIGRATION_PLAN.md
 ├── ARCHITECTURE.template.md       # 추상화 설계 → ARCHITECTURE.md
 ├── VALIDATION.template.md         # 검증 산출물 (PRD §1.3, 필수) → VALIDATION.md
