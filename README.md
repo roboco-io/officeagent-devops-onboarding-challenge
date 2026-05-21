@@ -1,6 +1,6 @@
 # OfficeAgent DevOps/AIOps 채용 과제 — 멀티 환경 배포 설계 (NHN·오픈스택 등 규제 대응)
 
-> **이 과제가 진짜로 묻는 것**: *"바이브 코딩과 AI 기반 학습을 도구로 다뤄, 본인이 익숙하지 않은 영역(NHN·CSAP·오픈스택·정부기관 납품 요건)의 마이그레이션을 실제로 해낼 수 있는 사람인가."*
+> **이 과제가 진짜로 묻는 것**: *"바이브 코딩과 AI 기반 학습을 도구로 다뤄, 본인이 익숙하지 않은 영역(NHN·CSAP·오픈스택·정부기관 납품 요건)의 멀티 환경 배포 설계를 실제로 해낼 수 있는 사람인가."*
 >
 > AI 사용을 숨기지 마세요 — 오히려 명시적으로 드러내는 것이 강한 시그널입니다. retros/ 안의 프롬프트·시행착오·복구가 1순위 평가 사료입니다.
 
@@ -26,6 +26,8 @@ OfficeAgent를 NHN 클라우드·오픈스택 온프레미스 등 고객 규제 
 | **구현 및 검증능력** | 구현 · 검증 가능성 (`VALIDATION.md` 또는 MIGRATION_PLAN §검증) | **20%** |
 | **잘 모르는 분야 학습능력** | 조사 · 학습 깊이 (+ Track C 20점 보조) | **20%** |
 | (보조) 발표 · 소통 | 30분 Q&A에서 위 3축 검증 수단 | **10%** |
+
+> **Track C (학습 궤적, 20점)**는 위 100점에 합산되지 않습니다 — Track A 60~75점 경계 후보의 합격/조건부를 가르는 보조 지표입니다.
 
 ### 기술 스택
 
@@ -57,9 +59,9 @@ PRD §1.1의 5개 도메인 (네트워크·데이터·컴퓨트·관측·비용)
 
 - **`wiki/index.md`를 진입점**으로 시작하세요. 10개 페이지가 `[[wiki-link]]`로 교차참조됩니다.
 - `wiki/migration-checklist.md` — 설계 시 점검 항목
-- `wiki/raw/` — Perplexity 1차 조사 원자료 (출처 보존)
+- `wiki/raw/` — Perplexity **초기 조사** 원자료 (출처 보존). ※ 초기 조사 메모이지 1차 자료가 아님 — 1차 자료는 NHN docs·KISA 고시·법령·OpenStack docs
 - **wiki는 출발점**입니다. 평가의 핵심은 wiki를 기반으로 1차 자료까지 직접 파고드는 것 — 그대로 베끼면 평가되지 않습니다.
-- 조사하며 새로 알게 된 내용을 wiki에 추가하면 가산 (필수 아님). `CLAUDE.md` §"LLM Wiki 활용 규칙" 참조.
+- 조사하며 새로 알게 된 내용을 wiki에 추가하면 §4 조사·학습 / Track C에서 긍정 평가 (필수 아님). `CLAUDE.md` §"LLM Wiki 활용 규칙" 참조.
 
 ## Retrobot — 자동 회고
 
@@ -84,7 +86,7 @@ git config core.hooksPath .githooks
 ├── wiki/                          # 공공 규제 LLM Wiki — index.md 진입, 10개 페이지
 │   ├── index.md                   #   자동 라우팅 레이어
 │   ├── csap.md, network-isolation.md, ...  #   교차참조 지식 페이지
-│   └── raw/                       #   Perplexity 1차 조사 원자료
+│   └── raw/                       #   Perplexity 초기 조사 원자료 (1차 자료 아님)
 ├── MIGRATION_PLAN.template.md     # 마이그레이션 설계서 + §6 검증 계획 → MIGRATION_PLAN.md
 ├── ARCHITECTURE.template.md       # 추상화 설계 → ARCHITECTURE.md
 ├── VALIDATION.template.md         # 검증 산출물 (PRD §1.3, 필수) → VALIDATION.md
